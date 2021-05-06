@@ -15,7 +15,7 @@ Todo App
     <h1 class="d-flex d-flex justify-content-center">Update Task</h1>
 
     <div class="container d-flex flex-column content">
-        <form class="d-inline-flex p-2" action="{{ url_for('update_task', id=update_id.id)}}" method="POST">
+        <form class="d-inline-flex p-2" action="{{ url_for('views.update_task', id=update_id.id)}}" method="POST">
             <input class="form-control" type="text" name="content" id="content" value="{{update_id.task}}">
             <input class="btn btn-primary ml-3" class="btn btn-primary" type="submit" value="Update" id="aqua">
         </form>

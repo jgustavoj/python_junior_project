@@ -26,7 +26,7 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Log in successful!', category='success')
                 login_user(user, remember=True)
-                return redirect(url_for('all_todos'))
+                return redirect(url_for('views.all_todos'))
             else:
                 flash('Incorrect password, please try again!', category='error')
         else:
@@ -51,13 +51,13 @@ def signup():
             flash('Email already exist.', category='error')    
         elif password1 != password2:
             flash('Passwords do not match, please try again', category='error')
-            return redirect(url_for('signup'))
+            return redirect(url_for('auth.signup'))
         else:
             new_user = User(first_name=first_name, last_name=last_name, email=email, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()           
             flash('Success! Account created. Please login.', category='success')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
 
     return render_template('signup.html', user=current_user)
 
@@ -67,4 +67,4 @@ def signup():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('auth.login'))

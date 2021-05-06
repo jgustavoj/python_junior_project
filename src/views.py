@@ -14,7 +14,7 @@ def home():
 
 # All task with user route
 @views.route('/todos')
-# @login_required
+@login_required
 def all_todos():
     if current_user.is_authenticated:
         complete_task = Todo.query.filter_by(complete=True).all()
@@ -24,7 +24,7 @@ def all_todos():
         
 # Add task with user route
 @views.route('/add', methods=['POST'])
-# @login_required
+@login_required
 def add_task():
         user_id = current_user.id
         task = request.form.get('content')
@@ -40,19 +40,19 @@ def add_task():
         else:
             db.session.add(new_task)
             db.session.commit()
-        return redirect(url_for('all_todos'))
+        return redirect(url_for('views.all_todos'))
 
 
 # Update task with user route 
 @views.route('/update/<int:id>', methods=['POST', 'GET'])
-# @login_required
+@login_required
 def update_task(id):
     update_id = Todo.query.get_or_404(id)
     if request.method == 'POST':
         update_id.task = request.form['content']
         if update_id.user_id == current_user.id:
             db.session.commit()
-            return redirect(url_for('all_todos'))
+            return redirect(url_for('views.all_todos'))
           
     else:
         return render_template('update.html', update_id=update_id, user=current_user)
@@ -60,21 +60,21 @@ def update_task(id):
 
 # Delete task route
 @views.route('/delete/<int:id>')
-# @login_required
+@login_required
 def delete_task(id):
     task_delete = Todo.query.get_or_404(id)
     if task_delete:
         db.session.delete(task_delete)
         db.session.commit()
-        return redirect(url_for('all_todos'))
+        return redirect(url_for('views.all_todos'))
 
 
 # Completed task route
 @views.route('/complete/<int:id>', methods=['GET'])
-# @login_required
+@login_required
 def completed_task(id):
     todo = Todo.query.get_or_404(id)
     todo.complete = True
     db.session.add(todo)
     db.session.commit()
-    return redirect(url_for('all_todos'))
+    return redirect(url_for('views.all_todos'))
