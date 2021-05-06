@@ -15,7 +15,7 @@ Todo App
 <div class="container d-flex flex-column content">
     <h1 class="d-flex d-flex justify-content-center">Todo List</h1>
 
-    <form class="d-flex justify-content-between p-2 mb-4" action="{{ url_for('add_task') }}" method="POST">
+    <form class="d-flex justify-content-between p-2 mb-4" action="{{ url_for('views.add_task') }}" method="POST">
         <input class="form-control" type="text" name="content" id="content" placeholder="Enter a new task and due date">
         <input class="calendar ml-3" type="date" id="dueDate" name="dueDate">
         <input class="btn btn-primary ml-3" type="submit" value="Add Task" id="aqua">
@@ -53,7 +53,7 @@ Todo App
                 <div class="row d-flex align-items-center">
                     <div class="col-sm">
                         <label for="minusBox">
-                            <a href="{{ url_for('completed_task', id=task.id)}}">
+                            <a href="{{ url_for('views.completed_task', id=task.id)}}">
                                 <i class="far fa-minus-square fa-lg text-danger"></i>
                             </a>
                         </label>
@@ -161,7 +161,7 @@ Todo App
                     </h5>
                 </div>
                 <div class="modal-footer">
-                    <a type="button" class="btn btn-primary" href="{{ url_for('delete_task', id=task.id)}}">
+                    <a type="button" class="btn btn-primary" href="{{ url_for('views.delete_task', id=task.id)}}">
                         Ok</a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>

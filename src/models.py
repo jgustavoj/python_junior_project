@@ -24,10 +24,6 @@ class Todo(db.Model):
     due_date = db.Column(db.DateTime, default=dt.datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    def __init__(self, task, due_date, user_id):
-        self.task = task 
-        self.due_date = due_date
-        self.user_id = user_id
 
     def __repr__(self):
         return '<Todo %r>' % self.id

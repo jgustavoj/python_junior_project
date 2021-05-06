@@ -1,7 +1,7 @@
-from flask import Flask, Blueprint, flash, redirect, render_template, url_for, request
-from models import db, Todo, User
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask import Blueprint, flash, redirect, render_template, url_for, request
+from .models import Todo, User
+from flask_login import login_required, current_user
+from . import db
 import datetime as dt
 
 
@@ -13,7 +13,7 @@ def home():
 
 
 # All task with user route
-@app.route('/todos')
+@views.route('/todos')
 # @login_required
 def all_todos():
     if current_user.is_authenticated:
@@ -23,7 +23,7 @@ def all_todos():
 
         
 # Add task with user route
-@app.route('/add', methods=['POST'])
+@views.route('/add', methods=['POST'])
 # @login_required
 def add_task():
         user_id = current_user.id
@@ -44,7 +44,7 @@ def add_task():
 
 
 # Update task with user route 
-@app.route('/update/<int:id>', methods=['POST', 'GET'])
+@views.route('/update/<int:id>', methods=['POST', 'GET'])
 # @login_required
 def update_task(id):
     update_id = Todo.query.get_or_404(id)
@@ -59,7 +59,7 @@ def update_task(id):
 
 
 # Delete task route
-@app.route('/delete/<int:id>')
+@views.route('/delete/<int:id>')
 # @login_required
 def delete_task(id):
     task_delete = Todo.query.get_or_404(id)
@@ -70,7 +70,7 @@ def delete_task(id):
 
 
 # Completed task route
-@app.route('/complete/<int:id>', methods=['GET'])
+@views.route('/complete/<int:id>', methods=['GET'])
 # @login_required
 def completed_task(id):
     todo = Todo.query.get_or_404(id)

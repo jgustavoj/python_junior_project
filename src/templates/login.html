@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
+
 {% block body %}
+
 
 <div class="container-fluid">
     <div class="row no-gutter">
@@ -16,7 +19,7 @@
                         <div class="col-lg-10 col-xl-7 mx-auto">
                             <h3 class="display-4">Login</h3>
                             <p class="text-muted mb-4">Please enter your login information</p>
-                            <form action="{{ url_for('login') }}" method="POST">
+                            <form action="{{ url_for('auth.login') }}" method="POST">
 
                                 <div class="form-group mb-3">
                                     <input name="email" id="email" type="email" placeholder="Email address" required=""
@@ -31,9 +34,9 @@
                                     class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign
                                     in</button>
                                 <div class="text-center d-flex justify-content-between mt-4">
-                                    <p>Don't have a login? <a href="{{ url_for('signup') }}"
+                                    <p>Don't have a login? <a href="{{ url_for('auth.signup') }}"
                                             class="font-italic text-muted">
-                                            <u>Signup</u></a></p>
+                                            <u class="tes">Signup</u></a></p>
                                 </div>
                             </form>
                         </div>

@@ -1,6 +1,7 @@
 from flask import Flask 
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+from flask_login import LoginManager
 
 
 db = SQLAlchemy()
@@ -26,10 +27,20 @@ def create_app():
 
     create_database(app)
 
+    #Authorization 
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+
+
     return app 
 
 def create_database(app):
-    if not path.exist('src/' + DB_NAME):
+    if not path.exists('src/' + DB_NAME):
         db.create_all(app=app)
         print('Created Database!')
 
