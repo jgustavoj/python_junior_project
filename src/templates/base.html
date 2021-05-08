@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav d-flex align-items-center">
                 {% if current_user.is_authenticated %}
-                <div class="">Hello, {{user.first_name}}</div>
+                <div class="" style="color: rgb(243, 200, 11)"><b>Hello, {{user.first_name}}</b> </div>
                 <!-- <a class="nav-item nav-link active" href="{{ url_for('views.all_todos')}}">Home<span
                         class="sr-only">(current)</span></a> -->
                 <a class="nav-item nav-link active" href="{{ url_for('views.all_todos')}} ">To-Do List</a>
