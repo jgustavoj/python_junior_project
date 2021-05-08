@@ -2,9 +2,9 @@
 
 {% block body %}
 
-<div class="container mt-5">
+<div class="container d-flex justify-content-center mt-5">
 
-    <div class="card w-50 mt-3">
+    <div class="card mt-3">
         <div class="card-body">
             <h5 class="card-title">Two Fish Creative</h5>
 
@@ -90,7 +90,7 @@
 
                 <!-- Comments -->
 
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Comments</span>
                     </div>
@@ -100,5 +100,8 @@
                 </div>
 
             </ul>
+
+            <a href="{{ url_for('views.all_contacts')}}" class="btn btn-primary">Back</a>
+            <a href="#" class="btn btn-primary">Edit</a>
         </div>
         {% endblock %}
