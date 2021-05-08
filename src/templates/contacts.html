@@ -2,15 +2,14 @@
 
 {% block body %}
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-end">
+<div class="container-fluid mt-5">
+    <div class="d-flex justify-content-center">
         <a href="{{ url_for('views.add_contact')}}">
             <button type="button" class="btn btn-primary">Add Contact</button>
         </a>
-
     </div>
-    <div class="d-flex justify-content-start">
-        <div class="card mt-3">
+    <div class="d-flex justify-content-between flex-column m">
+        <div class="card mt-3 mr-auto">
             <div class="card-body">
                 <h5 class="card-title">Two Fish Creative</h5>
 
@@ -37,59 +36,42 @@
                         <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
                             aria-describedby="inputGroup-sizing-default">04/02/2021</div>
                     </li>
+                </ul>
 
+                <!-- Buttons -->
 
+                <a href="{{ url_for('views.more_info')}}" class="btn btn-primary">More Info</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger" style="float: right;">Delete</a>
+            </div>
+        </div>
+        <div class="card mt-3 mr-auto">
+            <div class="card-body">
+                <h5 class="card-title">Two Fish Creative</h5>
 
-                    <!-- Platform -->
-                    <!-- 
-                <li class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text list-group-item list-group-item-light"
-                            id="inputGroup-sizing-default">Platform</span>
-                    </div>
-                    <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default">LinkedIn</div>
-                </li> -->
+                <ul class="list-group">
 
-                    <!-- Remote -->
-                    <!-- 
-                <li class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text list-group-item list-group-item-light"
-                            id="inputGroup-sizing-default">Remote</span>
-                    </div>
-                    <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                    <!-- Title -->
+
+                    <li class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text list-group-item list-group-item-light"
+                                id="inputGroup-sizing-default">Title</span>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                value="option2">
-                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">Software Engineer Python</div>
+                    </li>
+
+                    <!-- Date -->
+
+                    <li class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text list-group-item list-group-item-light"
+                                id="inputGroup-sizing-default">Date Applied</span>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                                value="option3">
-                            <label class="form-check-label" for="inlineRadio3">See Comments</label>
-                        </div>
-                    </div>
-                </li> -->
-
-                    <!-- Salary -->
-
-                    <!-- <li class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text list-group-item list-group-item-light"
-                            id="inputGroup-sizing-default">Salary</span>
-                    </div>
-                    <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default">$40,000 - $50,000</div>
-                </li> -->
-
-
+                        <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">04/02/2021</div>
+                    </li>
                 </ul>
 
                 <!-- Buttons -->
