@@ -11,6 +11,18 @@ views = Blueprint('views', __name__)
 def home():
     return render_template('login.html', user=current_user)
 
+"""
+Contacts Views
+"""
+
+@views.route('/contacts')
+def all_contacts():
+    return render_template('contacts.html', user=current_user)
+
+
+"""
+To-do Views
+"""
 
 # All task with user route
 @views.route('/todos')
