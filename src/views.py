@@ -20,6 +20,17 @@ def all_contacts():
     return render_template('contacts.html', user=current_user)
 
 
+@views.route('/addcontact')
+def add_contact():
+    return render_template('add_contact.html', user=current_user)
+
+
+@views.route('/contactmoreinfo')
+def more_info():
+    return render_template('moreinfo_contact.html', user=current_user)
+
+
+
 """
 To-do Views
 """
