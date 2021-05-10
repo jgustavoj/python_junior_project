@@ -2,7 +2,118 @@
 
 {% block body %}
 
-<h1>add contact</h1>
+<div class="container card mt-5">
+    <h3 class="mt-3">Add Contact</h3>
 
+    <form action="" class="input-group mb-3">
+        <!-- employer -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light"
+                    id="inputGroup-sizing-default">Employer</span>
+            </div>
+            <input name="employer" type="text" class="form-control list-group-item list-group-item-info"
+                aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <!-- Title -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light"
+                    id="inputGroup-sizing-default">Title</span>
+            </div>
+            <input name="title" type="text" class="form-control list-group-item list-group-item-info"
+                aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <!-- Date -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light" id="inputGroup-sizing-default">Date
+                    Applied</span>
+            </div>
+
+            <input name="date" type="date" class="form-control list-group-item list-group-item-info"
+                aria-label="Default" aria-describedby="inputGroup-sizing-default">
+
+        </div>
+
+
+
+        <!-- Platform -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light"
+                    id="inputGroup-sizing-default">Platform</span>
+            </div>
+            <input name="platform" type="text" class="form-control list-group-item list-group-item-info"
+                aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <!-- Remote -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light"
+                    id="inputGroup-sizing-default">Remote</span>
+            </div>
+            <div type="text" class="form-control list-group-item list-group-item-info" aria-label="Default"
+                aria-describedby="inputGroup-sizing-default">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                        value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                        value="option2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salary -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light"
+                    id="inputGroup-sizing-default">Salary</span>
+            </div>
+            <input name="salary" type="text" class="form-control list-group-item list-group-item-info"
+                aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <!-- Point of contact -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text list-group-item list-group-item-light"
+                    id="inputGroup-sizing-default">Point of
+                    Contact</span>
+            </div>
+            <input name="point-of-contact" type="text" class="form-control list-group-item list-group-item-info"
+                aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <!-- Comments -->
+
+        <div class="input-group mb-3 mr-3 ml-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Comments</span>
+            </div>
+            <textarea name="comments" class="form-control" aria-label="With textarea"></textarea>
+            <!-- <input name="comments" class="form-control" aria-label="With textarea"> -->
+
+        </div>
+
+        <input type="submit" class="btn btn-primary mb-2 ml-3">
+        <a href="{{ url_for('views.all_contacts')}}" class="btn btn-primary mb-2 ml-1">Back</a>
+
+    </form>
+</div>
 
 {% endblock %}
