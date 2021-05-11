@@ -28,3 +28,21 @@ class Todo(db.Model):
     def __repr__(self):
         return '<Todo %r>' % self.id
 
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    employer = db.Column(db.String(250), nullable=False)
+    title = db.Column(db.String(250), nullable=False)
+    date_applied = db.Column(db.DateTime, default=dt.datetime.now())
+    platform = db.Column(db.String(250), nullable=False)
+    remote = db.Column(db.Boolean(), nullable=False, default=False)
+    salary = db.Column(db.String(250), nullable=True)
+    point_of_contact = db.Column(db.String(250), nullable=True)
+    comments = db.Column(db.String(5000), nullable=True)
+
+    def __repr__(self):
+        return '<Contact %r>' % self.id
+
+
+
+
+
