@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from . import db
 from flask_login import UserMixin
 import datetime as dt
@@ -10,6 +11,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     todos = db.relationship('Todo', backref='user', lazy=True)
+    contacts = db.relationship('Contact', backref='user', lazy=True)
     
 
     def __repr__(self):
@@ -38,6 +40,8 @@ class Contact(db.Model):
     salary = db.Column(db.String(250), nullable=True)
     point_of_contact = db.Column(db.String(250), nullable=True)
     comments = db.Column(db.String(5000), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
 
     def __repr__(self):
         return '<Contact %r>' % self.id
