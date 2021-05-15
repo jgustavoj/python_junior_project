@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, url_for, request
-from .models import Todo, User
+from .models import Todo
 from flask_login import login_required, current_user
 from . import db
 import datetime as dt
