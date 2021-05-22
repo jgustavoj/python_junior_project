@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, url_for, request
-from .models import Todo
+from .models import Todo, Contact
 from flask_login import login_required, current_user
 from . import db
 import datetime as dt
@@ -20,9 +20,30 @@ def all_contacts():
     return render_template('contacts.html', user=current_user)
 
 
-@views.route('/addcontact')
+@views.route('/addcontact', methods=['POST','GET'])
 def add_contact():
-    return render_template('add_contact.html', user=current_user)
+    employer = request.form.get('employer')
+    title = request.form.get('title')
+    date_iso = request.form.get('date')
+    print('THIS IS DATE', type(date_iso), date_iso)
+    if date_iso == '':
+            date_iso = dt.datetime.now().isoformat(' ')
+            print('THIS IS THE OTHER DATE', type(date_iso), date_iso)
+    date = dt.datetime.fromisoformat(date_iso)
+    print('THIS IS TODAY DATE', date)
+    platform = request.form.get('platform')
+    salary = request.form.get('salary')
+    point_of_contact = request.form.get('point-of-contact')
+    comments = request.form.get('comments')
+    new_contact = Contact(employer=employer, title=title, date_applied=date, platform=platform, salary=salary, point_of_contact=point_of_contact, comments=comments, user=current_user)
+    if request.method ==  'POST':
+        db.session.add(new_contact)
+        db.session.commit()
+        return redirect(url_for('views.all_contacts'))
+    else:
+        return render_template('add_contact.html', user=current_user, new_contact=new_contact)
+
+
 
 
 @views.route('/contactmoreinfo')
@@ -49,21 +70,21 @@ def all_todos():
 @views.route('/add', methods=['POST'])
 @login_required
 def add_task():
-        user_id = current_user.id
-        task = request.form.get('content')
-        due_date_iso = request.form.get('dueDate')
-        if due_date_iso == '':
-            due_date_iso = dt.datetime.now().isoformat(' ')
-        due_date = dt.datetime.fromisoformat(due_date_iso)
+    user_id = current_user.id
+    task = request.form.get('content')
+    due_date_iso = request.form.get('dueDate')
+    if due_date_iso == '':
+        due_date_iso = dt.datetime.now().isoformat(' ')
+    due_date = dt.datetime.fromisoformat(due_date_iso)
 
-        new_task = Todo(task=task, due_date=due_date, user_id=user_id)
-        if task == "":
-            flash('Please enter a task', category='error')
-            redirect('/')
-        else:
-            db.session.add(new_task)
-            db.session.commit()
-        return redirect(url_for('views.all_todos'))
+    new_task = Todo(task=task, due_date=due_date, user_id=user_id)
+    if task == "":
+        flash('Please enter a task', category='error')
+        redirect('/')
+    else:
+        db.session.add(new_task)
+        db.session.commit()
+    return redirect(url_for('views.all_todos'))
 
 
 # Update task with user route 

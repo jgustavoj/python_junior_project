@@ -39,7 +39,7 @@ class Contact(db.Model):
     remote = db.Column(db.Boolean(), nullable=False, default=False)
     salary = db.Column(db.String(250), nullable=True)
     point_of_contact = db.Column(db.String(250), nullable=True)
-    comments = db.Column(db.String(5000), nullable=True)
+    comments = db.Column(db.Text, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
